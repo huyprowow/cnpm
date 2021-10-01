@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+* {
+  box-sizing: border-box;
+}
+* body {
+  font-family: "Times New Roman", Times, serif;
+  background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
+}
+* body .App {
+  margin: 0 auto;
+  max-width: 95%;
+  min-height: 100vh;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  padding: 1em;
+}
+* body .App #form-add {
+  margin-bottom: 1em;
+}
+* body .App #form-add h1 {
+  font-family: "Lobster", cursive;
+  margin-top: 0.2em;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 5px;
+  text-shadow: 3px 3px 20px #ff99cc, -2px 1px 30px #ff99cc;
+}
+* body .App #form-add #input-new-task {
+  color: white;
+}
+* body .App #form-add .form-group {
+  position: relative;
+  padding: 15px 0 0;
+  width: 80%;
+}
+* body .App #form-add .form-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1rem;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+* body .App #form-add .form-field::placeholder {
+  color: transparent;
+}
+* body .App #form-add .form-field:placeholder-shown ~ .form-label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+* body .App #form-add .form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+* body .App #form-add .form-field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #0d867c, black);
+  border-image-slice: 1;
+}
+* body .App #form-add .form-field:focus ~ .form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #0d867c;
+  font-weight: 700;
+}
+* body .App #form-add #btn-add {
+  position: absolute;
+}
+* body .App .btn {
+  margin: 0 0.1em;
+}
+* body .App #task-list h2 {
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-image: linear-gradient(to right, rgba(0, 2, 19, 0.932), #6363f3, rgba(0, 0, 0, 0)) 1;
+  margin-bottom: 5px;
+}
+* body .App #task-list ul {
+  list-style-type: none;
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 100%;
+  font-size: 1em;
+}
+* body .App #task-list ul li {
+  align-self: space-between;
+}
+* body .App #task-list ul li form #input-new-task {
+  color: white;
+}
+* body .App #task-list ul li form .form-group {
+  position: relative;
+  padding: 15px 0 0;
+  width: 80%;
+}
+* body .App #task-list ul li form .form-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1rem;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.3s;
+}
+* body .App #task-list ul li form .form-field::placeholder {
+  color: transparent;
+}
+* body .App #task-list ul li form .form-field:placeholder-shown ~ .form-label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+* body .App #task-list ul li form .form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+* body .App #task-list ul li form .form-field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #0d867c, black);
+  border-image-slice: 1;
+}
+* body .App #task-list ul li form .form-field:focus ~ .form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #0d867c;
+  font-weight: 700;
+}
+* body .App #task-list ul li form #task-label {
+  font-size: 1.2em;
+  margin-left: 5px;
+}
+* body .App #task-list ul li form .btn-large {
+  width: 40%;
+}
+
+@media (min-width: 768px) {
+  .App {
+    width: 55%;
+  }
+}

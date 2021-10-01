@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+$primary: #0d867c;
+$secondary: #38ef7d;
+$white: #fff;
+$gray: #9b9b9b;
+$pink: #ff99cc;
+
+@mixin form {
+    #input-new-task {
+        color: white;
+    }
+
+    .form-group {
+        position: relative;
+        padding: 15px 0 0;
+        width: 80%;
+    }
+
+    .form-field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid $gray;
+        outline: 0;
+        font-size: 1rem;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.3s;
+
+        &::placeholder {
+
+            color: transparent;
+        }
+
+        &:placeholder-shown~.form-label {
+            font-size: 1.3rem;
+            cursor: text;
+            top: 20px;
+        }
+    }
+
+    .form-label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: $gray;
+    }
+
+    .form-field:focus {
+        ~.form-label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: $primary;
+            font-weight: 700;
+        }
+
+        padding-bottom: 6px;
+        font-weight: 700;
+        border-width: 3px;
+        border-image: linear-gradient(to right, $primary, black);
+        border-image-slice: 1;
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-image: linear-gradient(to top,
+                rgb(219, 220, 215) 0%,
+                rgb(221, 220, 215) 24%,
+                rgb(226, 201, 204) 30%,
+                rgb(231, 98, 125) 46%,
+                rgb(184, 35, 90) 59%,
+                rgb(128, 19, 87) 71%,
+                rgb(61, 22, 53) 84%,
+                rgb(28, 26, 39) 100%);
+// background-color: aqua;
+        .App {
+            margin: 0 auto;
+            max-width: 95%;
+            min-height: 100vh;
+            background-color: transparent;
+            border: 2px solid black;
+            border-radius: 7px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+            padding: 1em;
+
+
+            #form-add {
+                h1 {
+                    font-family: 'Lobster', cursive;
+                    margin-top: 0.2em;
+                    font-weight: bold;
+                    color: $white;
+                    text-align: center;
+                    letter-spacing: 5px;
+                    text-shadow: 3px 3px 20px $pink,
+                        -2px 1px 30px $pink;
+                }
+
+                margin-bottom: 1em;
+                @include form;
+
+                #btn-add {
+                    position: absolute;
+
+                }
+            }
+
+            .btn {
+                margin: 0 0.1em;
+            }
+
+            #task-list {
+                h2 {
+                    border-bottom-width: 3px;
+                    border-bottom-style: solid;
+                    border-image: linear-gradient(to right, rgba(0, 2, 19, 0.932), rgb(99, 99, 243), rgba(0, 0, 0, 0)) 1; //border tuyen tinh
+                    margin-bottom: 5px;
+                }
+
+                ul {
+                    list-style-type: none;
+
+                    display: flex;
+                    flex-flow: column wrap;
+
+                    max-width: 100%;
+                    font-size: 1em;
+
+                    li {
+
+                        align-self: space-between;
+
+                        form {
+                            @include form;
+
+                            #task-label {
+                                font-size: 1.2em;
+                                margin-left: 5px;
+                            }
+
+                            .btn-large {
+                                width: 40%;
+                            }
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .App {
+        width: 55%;
+    }
+
+}
