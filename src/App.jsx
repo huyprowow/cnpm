@@ -82,8 +82,8 @@ const App = (props) => {
   return (
     <div className="App">
       <Form addTask={addTask}
-      isExitError={error}
-       />
+        isExitError={error}
+      />
       {filterList}
       <TasksLists tasks={tasks}
         filter={filter}

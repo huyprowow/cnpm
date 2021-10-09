@@ -5,8 +5,8 @@ const Form = (props) => {
     const { register, handleSubmit, formState: { errors } } = useForm();//
 
     console.log(errors);
-    if(props.isExitError){
-        errors.isExit=props.isExitError;
+    if (props.isExitError) {
+        errors.isExit = props.isExitError;
     }
     const handleNewTask = (e) => {
         setName(e.target.value);
@@ -17,10 +17,10 @@ const Form = (props) => {
         props.addTask(name);
         setName('');
     }
-    
+
     const handleKeyDown = (e) => {
-        if(e.key==='Enter'){
-            if(name){
+        if (e.key === 'Enter') {
+            if (name) {
                 props.addTask(name);
                 setName('')
                 e.target.blur();
@@ -51,10 +51,15 @@ const Form = (props) => {
                 <label htmlFor="input-new-task" className="form-label">Thêm nhiệm vụ ?</label>
                 <button className="btn btn-dark" id="btn-add" type="submit">Thêm</button>
                 <br />
-                {(errors.name||errors.isExit) &&
+                {errors.name &&
                     <span className="text-warning">
                         <i className="fas fa-exclamation-triangle"></i>
-                        không thể thêm công việc rỗng hoặc đã có
+                        không thể thêm công việc rỗng
+                    </span>}
+                {errors.isExit && !errors.name &&
+                    <span className="text-warning">
+                        <i className="fas fa-exclamation-triangle"></i>
+                        công việc đã tồn tại
                     </span>}
             </div>
         </form>
