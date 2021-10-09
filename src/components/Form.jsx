@@ -3,6 +3,11 @@ import { useForm } from 'react-hook-form'
 const Form = (props) => {
     const [name, setName] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();//
+
+    console.log(errors);
+    if(props.isExitError){
+        errors.isExit=props.isExitError;
+    }
     const handleNewTask = (e) => {
         setName(e.target.value);
     }
@@ -46,10 +51,10 @@ const Form = (props) => {
                 <label htmlFor="input-new-task" className="form-label">Thêm nhiệm vụ ?</label>
                 <button className="btn btn-dark" id="btn-add" type="submit">Thêm</button>
                 <br />
-                {errors.name &&
+                {(errors.name||errors.isExit) &&
                     <span className="text-warning">
                         <i className="fas fa-exclamation-triangle"></i>
-                        không thể thêm công việc rỗng
+                        không thể thêm công việc rỗng hoặc đã có
                     </span>}
             </div>
         </form>

@@ -6,43 +6,53 @@ import TasksLists from "./components/TaskLists";
 import FilterButton from "./components/FilterButton";
 import './styles/dist/App.css'
 
-//deploy: npm install --save gh-pages
-//        npm run deploy
 
-// //sprint2------------
-// //hàm lọc
-// const FILTER_MAP = {
-//   "Tất cả": () => true,
-//   "Chưa xong": (task) => !task.completed,
-//   "Đã xong": (task) => task.completed,
-// }
-// //mảng tên filter
-// const FILTER_NAMES = Object.keys(FILTER_MAP);
-// //---------------------------
+//sprint2------------
+//hàm lọc
+const FILTER_MAP = {
+  "Tất cả": () => true,
+  "Chưa xong": (task) => !task.completed,
+  "Đã xong": (task) => task.completed,
+}
+//mảng tên filter
+const FILTER_NAMES = Object.keys(FILTER_MAP);
+//---------------------------
 
 const App = (props) => {
   const [tasks, setTasks] = useState(props.tasks);
-  // const [filter, setFilter] = useState('Tất cả'); //sprint2
+  const [filter, setFilter] = useState('Tất cả'); //sprint2
+  const [error, setError] = useState(false);
 
   const toggleTaskCompleted = (id) => {
+
     const updatedTasks = tasks.map(task => {
       if (id === task.id) {
         return { ...task, completed: !task.completed }
       }
       return task;
     });
-    setTasks(updatedTasks)
+    setTasks(updatedTasks);
   }
 
   const addTask = (name) => {
     console.log(name)
-    const newTask = {
-      id: "item-" + nanoid(),
-      name: name,
-      completed: false
-    }
+    let isExiting = false;
+    tasks.forEach(task => {
+      if (task.name === name) {
+        isExiting = true;
+        setError(true);
+      }
+    });
 
-    setTasks([...tasks, newTask]);
+    if (!isExiting) {
+      const newTask = {
+        id: "item-" + nanoid(),
+        name: name,
+        completed: false
+      }
+
+      setTasks([...tasks, newTask]);
+    }
   }
   const deleteTask = (id) => {
     console.log(id);
@@ -59,26 +69,25 @@ const App = (props) => {
     })
     setTasks(editedTask);
   }
-  // //sprint2--------------------------
-  //   const filterList = FILTER_NAMES.map(
-  //     name => <FilterButton key={name}
-  //       name={name}
-  //       isPressed={name === filter}
-  //       setFilter={setFilter}
-  //     />
-  //   );
-  // //---------------------------------
+  //sprint2--------------------------
+  const filterList = FILTER_NAMES.map(
+    name => <FilterButton key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
+    />
+  );
+  //---------------------------------
 
   return (
     <div className="App">
-      <Form addTask={addTask} />
-      {/* {filterList} sprint2 the cho 3 cai duoi*/}
-      <FilterButton name="Tất cả" />
-      <FilterButton name="Chưa xong" />
-      <FilterButton name="Đã xong" />
+      <Form addTask={addTask}
+      isExitError={error}
+       />
+      {filterList}
       <TasksLists tasks={tasks}
-        // filter={filter} sprint2
-        // filterFunction={FILTER_MAP} sprint2
+        filter={filter}
+        filterFunction={FILTER_MAP}
         toggleTaskCompleted={toggleTaskCompleted}
         deleteTask={deleteTask}
         editTask={editTask} />

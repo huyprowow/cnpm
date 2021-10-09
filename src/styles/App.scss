@@ -83,7 +83,8 @@ $pink: #ff99cc;
                 rgb(128, 19, 87) 71%,
                 rgb(61, 22, 53) 84%,
                 rgb(28, 26, 39) 100%);
-// background-color: aqua;
+
+        // background-color: aqua;
         .App {
             margin: 0 auto;
             max-width: 95%;
@@ -122,6 +123,7 @@ $pink: #ff99cc;
 
             #task-list {
                 h2 {
+
                     border-bottom-width: 3px;
                     border-bottom-style: solid;
                     border-image: linear-gradient(to right, rgba(0, 2, 19, 0.932), rgb(99, 99, 243), rgba(0, 0, 0, 0)) 1; //border tuyen tinh
